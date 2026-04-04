@@ -28,7 +28,7 @@ El sistema ha sido desplegado siguiendo los estándares de administración de si
 Para replicar este entorno en un servidor Linux compatible, siga estos pasos detallados en el Anexo B de la memoria:
 
 a. Preparación de la Base de Datos
-Importe el script consolidado que incluye el DDL (tablas) y el DML (datos iniciales de IAs y usuarios):
+Importe el script consolidado que incluye el DDL (tablas) y el DML (datos iniciales de una IA, un usuario administrador y un usuario ficticio):
 
 - Acceso a MariaDB y creación de la base de datos
 
