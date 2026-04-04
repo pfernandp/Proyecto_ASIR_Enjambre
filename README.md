@@ -6,7 +6,7 @@ Este proyecto es una aplicación web dinámica diseñada para introducir y refor
 
 # Arquitectura e Interfaz Inicial
 
-Actualmente el proyecto se encuentra en su primera fase de entrega (7 de abril), cumpliendo con los siguientes objetivos:
+Actualmente el proyecto se encuentra en su primera fase de entrega, cumpliendo con los siguientes objetivos:
 
   - Definición de la arquitectura de sistemas (LAMP sobre VirtualBox).
   - Diseño y normalización de la base de datos relacional.
@@ -14,7 +14,7 @@ Actualmente el proyecto se encuentra en su primera fase de entrega (7 de abril),
 
 # Stack Tecnológico
 
-El sistema ha sido desplegado siguiendo los estándares de administración de sistemas aprendidos en el ciclo:
+El sistema ha sido desplegado siguiendo los estándares de administración de sistemas trabajados en el ciclo:
 
   - Virtualización: Oracle VM VirtualBox (aislamiento y portabilidad).
   - SO: Ubuntu 25.10.
