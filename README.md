@@ -3,9 +3,11 @@
 El despertar del Enjambre
 
 Sistema de Concienciación en Ciberseguridad basado en Escape Room Digital
+
 Este proyecto es una aplicación web dinámica diseñada para introducir y reforzar conceptos básicos de ciberseguridad en el alumnado de Educación Secundaria Obligatoria (ESO). A través de una narrativa de ciencia ficción, los usuarios asumen el rol de operadores del sistema que deben neutralizar a seis Inteligencias Artificiales hostiles, cada una representando un riesgo real del entorno digital.
 
 Arquitectura e Interfaz Inicial
+
 Actualmente el proyecto se encuentra en su primera fase de entrega (7 de abril), cumpliendo con los siguientes objetivos:
 
   - Definición de la arquitectura de sistemas (LAMP sobre VirtualBox).
@@ -13,6 +15,7 @@ Actualmente el proyecto se encuentra en su primera fase de entrega (7 de abril),
   - Implementación de la identidad visual uniforme y secciones públicas estáticas.
 
 Stack Tecnológico
+
 El sistema ha sido desplegado siguiendo los estándares de administración de sistemas aprendidos en el ciclo:
 
   - Virtualización: Oracle VM VirtualBox (aislamiento y portabilidad).
@@ -23,6 +26,7 @@ El sistema ha sido desplegado siguiendo los estándares de administración de si
   - Frontend: HTML5 / CSS3 (estética de terminal de seguridad).
 
 Replicabilidad y Despliegue
+
 Para replicar este entorno en un servidor Linux compatible, siga estos pasos detallados en el Anexo B de la memoria:
 
 1. Preparación de la Base de Datos
@@ -44,6 +48,7 @@ sudo chmod -R 755 /var/www/html/
 Identifique la dirección IP de su servidor (ip a) y acceda mediante un navegador web a la ruta inicial: http://[IP_SERVIDOR]/index.php
 
 Diseño de Datos y Auditoría
+
 La base de datos se fundamenta en un modelo relacional normalizado (3FN) con las siguientes entidades principales:
   -IA: Los seis antagonistas (CLAVE, VELO, ANZUELO, RASTRO, PARÁSITO, NEXO).
   - USUARIO: Gestión de roles (Administrador/Alumno) y credenciales.
@@ -52,6 +57,7 @@ La base de datos se fundamenta en un modelo relacional normalizado (3FN) con las
   - ESTADO_USUARIO_PRUEBA: Registro del progreso y métricas de resolución.
 
 Estructura del Repositorio
+
 /docs: Memoria técnica detallada en PDF (Proyecto_Pedro_Fernandez.pdf).
 /sql: Script autoejecutable enjambre.sql.
 /www: Código fuente de la aplicación web (PHP, CSS y recursos gráficos).
