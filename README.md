@@ -62,7 +62,7 @@ La base de datos se fundamenta en un modelo relacional normalizado (3FN) con las
 
 # Estructura del Repositorio
 
-/docs: Memoria técnica detallada en PDF (Proyecto_Pedro_Fernandez.pdf).
+/docs: Memoria técnica detallada en Word (Proyecto_Pedro_Fernandez.docx).
 /sql: Script autoejecutable enjambre.sql.
 /www: Código fuente de la aplicación web (PHP, CSS y recursos gráficos).
 
