@@ -54,7 +54,7 @@ Identifique la dirección IP de su servidor (ip a) y acceda mediante un navegado
 # Diseño de Datos y Auditoría
 
 La base de datos se fundamenta en un modelo relacional normalizado (3FN) con las siguientes entidades principales:
-  -IA: Los seis antagonistas (CLAVE, VELO, ANZUELO, RASTRO, PARÁSITO, NEXO).
+  - IA: Los seis antagonistas (CLAVE, VELO, ANZUELO, RASTRO, PARÁSITO, NEXO).
   - USUARIO: Gestión de roles (Administrador/Alumno) y credenciales.
   - PRUEBA: Retos técnicos asociados a cada IA.
   - LOG_IA: Tabla de auditoría y trazabilidad para la monitorización de eventos de seguridad.
@@ -63,7 +63,9 @@ La base de datos se fundamenta en un modelo relacional normalizado (3FN) con las
 # Estructura del Repositorio
 
 /docs: Memoria técnica detallada en Word (Proyecto_Pedro_Fernandez.docx).
+
 /sql: Script autoejecutable enjambre.sql.
+
 /www: Código fuente de la aplicación web (PHP, CSS y recursos gráficos).
 
 --------------------------------------------------------------------------------
