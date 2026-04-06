@@ -51,7 +51,7 @@ Mueva los archivos al DocumentRoot de Apache y configure los permisos necesarios
 # Acceso al Sistema
 Identifique la dirección IP de su servidor (ip a) y acceda mediante un navegador web a la ruta inicial: http://[IP_SERVIDOR]/index.php
 
-#Diseño de Datos y Auditoría
+# Diseño de Datos y Auditoría
 
 La base de datos se fundamenta en un modelo relacional normalizado (3FN) con las siguientes entidades principales:
   -IA: Los seis antagonistas (CLAVE, VELO, ANZUELO, RASTRO, PARÁSITO, NEXO).
