@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Enjambre - Centro de Contención</title>
+    <audio id="bg-music" src="audio1.mp3" autoplay loop></audio>
+        <script>
+            // Forzar reproducción al hacer clic si el navegador bloquea el autoplay inicial
+            document.addEventListener('click', function() {
+                var audio = document.getElementById('bg-music');
+                if (audio.paused) {
+                    audio.play();
+                }
+            }, { once: true });
+        </script>
     <style>
         
         *{ 
