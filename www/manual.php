@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manual del Operador - El Enjambre</title>
+    <audio id="bg-music" src="audio1.mp3" autoplay loop></audio>
+        <script>
+            // Forzar reproducción al hacer clic si el navegador bloquea el autoplay inicial
+            document.addEventListener('click', function() {
+                var audio = document.getElementById('bg-music');
+                if (audio.paused) {
+                    audio.play();
+                }
+            }, { once: true });
+        </script>
     <style>
         
         *{ margin: 0px; padding: 0px; box-sizing: border-box; }
@@ -65,7 +75,7 @@
 
     <main class="manual-container">
         <header>
-            <h1>> PROTOCOLO DE RESTAURACIÓN v1.0</h1>
+            <h1>> PROTOCOLO DE RESTAURACIÓN <</h1>
             <p class="status-bar">SISTEMA: COMPROMETIDO | ORIGEN: EL ENJAMBRE | OPERADOR: NO IDENTIFICADO</p>
         </header>
 
@@ -110,6 +120,5 @@
             <a href="index.php" class="btn-return">Volver al Centro de Contención</a>
         </footer>
     </main>
-
 </body>
 </html>
