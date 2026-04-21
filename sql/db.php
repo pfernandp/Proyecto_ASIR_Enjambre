@@ -1,8 +1,8 @@
 <?php 
 // --- PARÁMETROS DE CONEXIÓN AL SGBD MARIADB ---
 $servidor = "localhost";
-$usuario = "admin";
-$password = "admin";
+$usuario = "root";
+$password = "";
 $bd = "enjambre";
 
 // --- INICIALIZACIÓN DE LA CONEXIÓN ---
