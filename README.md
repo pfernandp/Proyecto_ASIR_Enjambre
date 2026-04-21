@@ -68,5 +68,7 @@ La base de datos se fundamenta en un modelo relacional normalizado (3FN) con las
 
 /www: Código fuente de la aplicación web (PHP, CSS y recursos gráficos).
 
+/config: Nodo de conexión al SGBD MariaDB utilizando la extensión mysqli.
+
 --------------------------------------------------------------------------------
 Autor: Pedro Fernández Rodríguez - Alumno de ASIR en el IES Suárez de Figueroa de Zafra (Badajoz)
