@@ -1,74 +1,67 @@
-# El despertar del Enjambre
+El Despertar del Enjambre: Escape Room de Ciberseguridad Educativa
+Autor: Pedro Fernández Rodríguez
+Centro: IES Suárez de Figueroa (Zafra)
+Ciclo: CFGS Administración de Sistemas Informáticos en Red (ASIR)
+--------------------------------------------------------------------------------
 
-Sistema de Concienciación en Ciberseguridad basado en Escape Room Digital
-
-Este proyecto es una aplicación web dinámica diseñada para introducir y reforzar conceptos básicos de ciberseguridad en el alumnado de Educación Secundaria Obligatoria (ESO). A través de una narrativa de ciencia ficción, los usuarios asumen el rol de operadores del sistema que deben neutralizar a seis Inteligencias Artificiales hostiles, cada una representando un riesgo real del entorno digital.
-
-# Arquitectura e Interfaz Inicial
-
-Actualmente el proyecto se encuentra en su primera fase de entrega, cumpliendo con los siguientes objetivos:
-
-  - Definición de la arquitectura de sistemas (LAMP sobre VirtualBox).
-  - Diseño y normalización de la base de datos relacional.
-  - Implementación de la identidad visual uniforme y secciones públicas estáticas.
-
-# Stack Tecnológico
-
-El sistema ha sido desplegado siguiendo los estándares de administración de sistemas trabajados en el ciclo:
-
-  - Virtualización: Oracle VM VirtualBox (aislamiento y portabilidad).
-  - SO: Ubuntu 25.10.
-  - Servidor Web: Apache2 (puerto TCP 80).
-  - Base de Datos: MariaDB con motor InnoDB (garantía de integridad y propiedades ACID).
-  - Backend: PHP (intérprete de scripts de servidor para lógica y sesiones).
-  - Frontend: HTML5 / CSS3 (estética de terminal de seguridad).
-
-# Replicabilidad y Despliegue
-
-Para replicar este entorno en un servidor Linux compatible, siga estos pasos detallados en el Anexo B de la memoria:
-
-a. Preparación de la Base de Datos
-Importe el script consolidado que incluye el DDL (tablas) y el DML (datos iniciales de una IA, un usuario administrador y un usuario ficticio):
-
-- Acceso a MariaDB y creación de la base de datos
-
-      mysql -u root -p -e "CREATE DATABASE enjambre CHARACTER SET utf8 COLLATE utf8_general_ci;"
-
-- Importación del esquema y datos de prueba
-
-      mysql -u root -p enjambre < sql/enjambre.sql
-
-b. Despliegue de la Aplicación Web
-
-Mueva los archivos al DocumentRoot de Apache y configure los permisos necesarios para la ejecución de scripts PHP:
-
-    sudo cp -r www/* /var/www/html/
-
-    sudo chown -R www-data:www-data /var/www/html/
-
-    sudo chmod -R 755 /var/www/html/
-
-# Acceso al Sistema
-Identifique la dirección IP de su servidor (ip a) y acceda mediante un navegador web a la ruta inicial: http://[IP_SERVIDOR]/index.php
-
-# Diseño de la Base de Datos
-
-La base de datos se fundamenta en un modelo relacional normalizado (3FN) con las siguientes entidades principales:
-  - IA: Los seis antagonistas (CLAVE, VELO, ANZUELO, RASTRO, PARÁSITO, NEXO).
-  - USUARIO: Gestión de roles (Administrador/Alumno) y credenciales.
-  - PRUEBA: Retos técnicos asociados a cada IA.
-  - LOG_IA: Tabla de auditoría y trazabilidad para la monitorización de eventos de seguridad.
-  - ESTADO_USUARIO_PRUEBA: Registro del progreso y métricas de resolución.
-
-# Estructura del Repositorio
-
-/docs: Memoria técnica detallada en Word (Proyecto_Pedro_Fernandez.docx).
-
-/sql: Script autoejecutable enjambre.sql.
-
-/www: Código fuente de la aplicación web (PHP, CSS y recursos gráficos).
-
-/config: Nodo de conexión al SGBD MariaDB utilizando la extensión mysqli.
+#Descripción del Proyecto
+"El Despertar del Enjambre" es una aplicación web dinámica diseñada como herramienta de concienciación en ciberseguridad para alumnos de la ESO. 
+El sistema utiliza una narrativa de ciencia ficción donde el usuario, en el rol de "Operador de Red", debe neutralizar seis Inteligencias Artificiales (IAs) hostiles que han tomado el control del sistema.
+Cada entidad representa un riesgo real del entorno digital que el alumno debe resolver para obtener un fragmento de código crítico:
+CLAVE: Gestión de contraseñas robustas.
+VELO: Configuración de privacidad y exposición de datos.
+ANZUELO: Identificación de técnicas de Phishing.
+RASTRO: Gestión de la huella digital y metadatos.
+PARÁSITO: Detección de malware y archivos infectados.
+NEXO: Seguridad en comunicaciones inalámbricas (Wi-Fi).
 
 --------------------------------------------------------------------------------
-Autor: Pedro Fernández Rodríguez - Alumno de ASIR en el IES Suárez de Figueroa de Zafra (Badajoz)
+#Arquitectura de Sistemas (Stack LAMP)
+El despliegue se basa en un modelo de tres capas para garantizar la independencia y seguridad de los datos:
+  - Infraestructura: Servidor virtualizado con Oracle VM VirtualBox (v. 7.x) ejecutando Ubuntu 25.10.
+  - Servidor Web: Apache2 (Puerto 80), configurado con una jerarquía de archivos modular para mejorar la seguridad lógica.
+  - Nivel Interno (SGBD): MariaDB utilizando el motor transaccional InnoDB, garantizando integridad referencial y propiedades ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad).
+  - Lógica de Servidor: PHP 8.x, encargado de la gestión de sesiones, validación de retos y persistencia de datos mediante extensiones seguras.
+
+--------------------------------------------------------------------------------
+#Seguridad y Hardening
+Como administrador de sistemas, se han aplicado medidas de robustecimiento (hardening) en el Nivel de Aplicación e Interno:
+  - Prevención de Inyección SQL: Migración completa de la lógica a Sentencias Preparadas (PDO) en todos los controladores críticos (login.php, ia_detalle.php, resolver_prueba.php, verificar_final.php).
+  - Seguridad Criptográfica: Almacenamiento de credenciales mediante hashes irreversibles usando la función password_hash() con algoritmo BCRYPT.
+  - Estructura Modular: Aislamiento de parámetros sensibles de conexión en el directorio protegido /config/, fuera del acceso público directo.
+  - Control de Acceso (ACL): Gestión de sesiones persistentes que impiden el bypass de pruebas o el acceso prematuro al Protocolo de Restauración.
+
+--------------------------------------------------------------------------------
+#Diseño de Datos y Auditoría
+La base de datos enjambre sigue un modelo relacional normalizado en Tercera Forma Normal (3FN). Se compone de 5 entidades principales:
+  - USUARIO: Control de identidades y roles (Alumno/Administrador).
+  - IA: Catálogo de entidades antagonistas y niveles de peligro.
+  - PRUEBA: Definición de retos y almacenamiento de fragmentos de código.
+  - ESTADO_USUARIO_PRUEBA: Tabla asociativa que gestiona la relación N:M entre usuarios y pruebas, asegurando la atomicidad del progreso mediante ON DUPLICATE KEY UPDATE.
+  - LOG_IA: Sistema de trazabilidad y auditoría de eventos de seguridad (intentos fallidos, alertas críticas) para supervisión técnica.
+
+--------------------------------------------------------------------------------
+#Instrucciones de Despliegue y Replicabilidad
+Para replicar el entorno en un servidor Linux compatible, siga estos pasos administrativos:
+
+a. Preparación de la Base de Datos
+Acceda a MariaDB e importe el script consolidado que incluye el DDL y los fragmentos maestros:
+    
+    mysql -u root -p -e "CREATE DATABASE enjambre;"
+    mysql -u root -p enjambre < sql/enjambre.sql
+
+b. Despliegue de la Aplicación
+Mueva el contenido de la carpeta /www al DocumentRoot de Apache y configure los permisos siguiendo el principio de mínimo privilegio:
+
+    sudo cp -r www/* /var/www/html/
+    sudo chown -R www-data:www-data /var/www/html/
+    sudo chmod -R 755 /var/www/html/
+
+c. Configuración de Conexión
+Ajuste las credenciales de acceso al SGBD en el archivo /config/db.php según su entorno local.
+
+--------------------------------------------------------------------------------
+Pedro Fernández Rodríguez
+Administración de Sistemas Informáticos en Red
+IES Suárez de Figueroa (Zafra)
+--------------------------------------------------------------------------------
