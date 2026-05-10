@@ -4,7 +4,7 @@ Centro: IES Suárez de Figueroa (Zafra)
 Ciclo: CFGS Administración de Sistemas Informáticos en Red (ASIR)
 --------------------------------------------------------------------------------
 
-#Descripción del Proyecto
+# Descripción del Proyecto
 "El Despertar del Enjambre" es una aplicación web dinámica diseñada como herramienta de concienciación en ciberseguridad para alumnos de la ESO. 
 El sistema utiliza una narrativa de ciencia ficción donde el usuario, en el rol de "Operador de Red", debe neutralizar seis Inteligencias Artificiales (IAs) hostiles que han tomado el control del sistema.
 Cada entidad representa un riesgo real del entorno digital que el alumno debe resolver para obtener un fragmento de código crítico:
@@ -16,7 +16,7 @@ PARÁSITO: Detección de malware y archivos infectados.
 NEXO: Seguridad en comunicaciones inalámbricas (Wi-Fi).
 
 --------------------------------------------------------------------------------
-#Arquitectura de Sistemas (Stack LAMP)
+# Arquitectura de Sistemas (Stack LAMP)
 El despliegue se basa en un modelo de tres capas para garantizar la independencia y seguridad de los datos:
   - Infraestructura: Servidor virtualizado con Oracle VM VirtualBox (v. 7.x) ejecutando Ubuntu 25.10.
   - Servidor Web: Apache2 (Puerto 80), configurado con una jerarquía de archivos modular para mejorar la seguridad lógica.
@@ -24,7 +24,7 @@ El despliegue se basa en un modelo de tres capas para garantizar la independenci
   - Lógica de Servidor: PHP 8.x, encargado de la gestión de sesiones, validación de retos y persistencia de datos mediante extensiones seguras.
 
 --------------------------------------------------------------------------------
-#Seguridad y Hardening
+# Seguridad y Hardening
 Como administrador de sistemas, se han aplicado medidas de robustecimiento (hardening) en el Nivel de Aplicación e Interno:
   - Prevención de Inyección SQL: Migración completa de la lógica a Sentencias Preparadas (PDO) en todos los controladores críticos (login.php, ia_detalle.php, resolver_prueba.php, verificar_final.php).
   - Seguridad Criptográfica: Almacenamiento de credenciales mediante hashes irreversibles usando la función password_hash() con algoritmo BCRYPT.
@@ -32,7 +32,7 @@ Como administrador de sistemas, se han aplicado medidas de robustecimiento (hard
   - Control de Acceso (ACL): Gestión de sesiones persistentes que impiden el bypass de pruebas o el acceso prematuro al Protocolo de Restauración.
 
 --------------------------------------------------------------------------------
-#Diseño de Datos y Auditoría
+# Diseño de Datos y Auditoría
 La base de datos enjambre sigue un modelo relacional normalizado en Tercera Forma Normal (3FN). Se compone de 5 entidades principales:
   - USUARIO: Control de identidades y roles (Alumno/Administrador).
   - IA: Catálogo de entidades antagonistas y niveles de peligro.
@@ -41,7 +41,7 @@ La base de datos enjambre sigue un modelo relacional normalizado en Tercera Form
   - LOG_IA: Sistema de trazabilidad y auditoría de eventos de seguridad (intentos fallidos, alertas críticas) para supervisión técnica.
 
 --------------------------------------------------------------------------------
-#Instrucciones de Despliegue y Replicabilidad
+# Instrucciones de Despliegue y Replicabilidad
 Para replicar el entorno en un servidor Linux compatible, siga estos pasos administrativos:
 
 a. Preparación de la Base de Datos
