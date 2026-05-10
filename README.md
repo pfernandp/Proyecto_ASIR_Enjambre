@@ -61,7 +61,3 @@ c. Configuración de Conexión
 Ajuste las credenciales de acceso al SGBD en el archivo /config/db.php según su entorno local.
 
 --------------------------------------------------------------------------------
-Pedro Fernández Rodríguez
-Administración de Sistemas Informáticos en Red
-IES Suárez de Figueroa (Zafra)
---------------------------------------------------------------------------------
