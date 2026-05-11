@@ -55,9 +55,9 @@ Acceda a MariaDB e importe el script consolidado que incluye el DDL y los fragme
 b. Despliegue de la Aplicación
 Mueva el contenido de la carpeta /www al DocumentRoot de Apache y configure los permisos siguiendo el principio de mínimo privilegio:
 
-    sudo cp -r www/* /var/www/html/
-    sudo chown -R www-data:www-data /var/www/html/
-    sudo chmod -R 755 /var/www/html/
+    sudo cp -r www/* /var/www/
+    sudo chown -R www-data:www-data /var/www/
+    sudo chmod -R 755 /var/www/
 
 c. Configuración de Conexión
 Ajuste las credenciales de acceso al SGBD en el archivo /config/db.php según su entorno local.
