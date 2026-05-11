@@ -228,6 +228,10 @@ try {
                                 }
                             }, { once: true });
                         </script>
+
+                    <div class="warning" style="color: #f00; font-weight: bold; font-size: 0.85em; border: 1px solid #f00; background: rgba(20, 0, 0, 0.7); padding: 12px 16px; margin: 20px 0; letter-spacing: 1px;">
+                        > ALERTA: El uso de patrones predecibles permitirá a CLAVE vulnerar los privilegios de acceso al núcleo.
+                    </div>
  
                     <div style="margin: 20px 0;">
                         <label style="display: block; font-size: 0.8em; font-weight: bold; margin-bottom: 10px; color: #0f0; letter-spacing: 1px;">> Introduce una contraseña segura:</label>
@@ -252,6 +256,10 @@ try {
                                 }
                             }, { once: true });
                         </script>
+
+                    <div class="warning" style="color: #f00; font-weight: bold; font-size: 0.85em; border: 1px solid #f00; background: rgba(20, 0, 0, 0.7); padding: 12px 16px; margin: 20px 0; letter-spacing: 1px;">
+                        > ALERTA: El exceso de información pública permitirá a VELO monitorizar tu ubicación e identidad en tiempo real.
+                    </div>
  
                     <div style="margin: 20px 0;">
                         <label style="display: block; font-size: 0.8em; font-weight: bold; margin-bottom: 10px; color: #0f0; letter-spacing: 1px;">> Desmarca los datos que NO deberían ser públicos:</label>
@@ -408,6 +416,15 @@ try {
                     </div>
  
                     <audio id="bg-music" src="Audio7.mp3" autoplay loop></audio>
+                        <script>
+                            // Forzar reproducción al hacer clic si el navegador bloquea el autoplay inicial
+                            document.addEventListener('click', function() {
+                                var audio = document.getElementById('bg-music');
+                                if (audio.paused) {
+                                    audio.play();
+                                }
+                            }, { once: true });
+                        </script>
  
                     <div class="warning" style="color: #f00; font-weight: bold; font-size: 0.85em; border: 1px solid #f00; background: rgba(20, 0, 0, 0.7); padding: 12px 16px; margin: 20px 0; letter-spacing: 1px;">
                         > ALERTA: Un archivo infectado podría bloquear el acceso al sistema completo.
@@ -453,6 +470,16 @@ try {
                     </div>
  
                     <audio id="bg-music" src="Audio8.mp3" autoplay loop></audio>
+
+                        <script>
+                            // Forzar reproducción al hacer clic si el navegador bloquea el autoplay inicial
+                            document.addEventListener('click', function() {
+                                var audio = document.getElementById('bg-music');
+                                if (audio.paused) {
+                                    audio.play();
+                                }
+                            }, { once: true });
+                        </script>
  
                     <div class="warning" style="color: #f00; font-weight: bold; font-size: 0.85em; border: 1px solid #f00; background: rgba(20, 0, 0, 0.7); padding: 12px 16px; margin: 20px 0; letter-spacing: 1px;">
                         > ALERTA: Una conexión insegura permitirá a NEXO interceptar la información del sistema.
