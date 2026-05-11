@@ -9,12 +9,13 @@
 "El Despertar del Enjambre" es una aplicación web dinámica diseñada como herramienta de concienciación en ciberseguridad para alumnos de la ESO. 
 El sistema utiliza una narrativa de ciencia ficción donde el usuario, en el rol de "Operador de Red", debe neutralizar seis Inteligencias Artificiales (IAs) hostiles que han tomado el control del sistema.
 Cada entidad representa un riesgo real del entorno digital que el alumno debe resolver para obtener un fragmento de código crítico:
-CLAVE: Gestión de contraseñas robustas.
-VELO: Configuración de privacidad y exposición de datos.
-ANZUELO: Identificación de técnicas de Phishing.
-RASTRO: Gestión de la huella digital y metadatos.
-PARÁSITO: Detección de malware y archivos infectados.
-NEXO: Seguridad en comunicaciones inalámbricas (Wi-Fi).
+      
+      CLAVE: Gestión de contraseñas robustas.
+      VELO: Configuración de privacidad y exposición de datos.
+      ANZUELO: Identificación de técnicas de Phishing.
+      RASTRO: Gestión de la huella digital y metadatos.
+      PARÁSITO: Detección de malware y archivos infectados.
+      NEXO: Seguridad en comunicaciones inalámbricas (Wi-Fi).
 
 --------------------------------------------------------------------------------
 # Arquitectura de Sistemas (Stack LAMP)
