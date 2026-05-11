@@ -230,7 +230,7 @@ try {
                         </script>
 
                     <div class="warning" style="color: #f00; font-weight: bold; font-size: 0.85em; border: 1px solid #f00; background: rgba(20, 0, 0, 0.7); padding: 12px 16px; margin: 20px 0; letter-spacing: 1px;">
-                        > ALERTA: El uso de patrones predecibles permitirá a CLAVE vulnerar los privilegios de acceso al núcleo.
+                        > ALERTA: El uso de patrones predecibles permitirá a CLAVE vulnerar los privilegios de acceso al sistema.
                     </div>
  
                     <div style="margin: 20px 0;">
@@ -281,7 +281,7 @@ try {
  
                 <?php elseif($id_ia == 3): // RETO ANZUELO (Phishing) ?>
  
-                    <p style="font-size: 0.9em; line-height: 1.5; font-style: italic; color: #8f8; border-left: 3px solid #0f0; padding: 12px 16px; background: rgba(0, 20, 0, 0.5); margin: 20px 0;"><i>La IA ANZUELO está enviando mensajes falsos para engañar a estudiantes y conseguir acceso a sus cuentas. Mensajes urgentes, premios inexistentes, enlaces irresistibles... no hace falta forzar la entrada si te invitan a pasar.</i></p>
+                    <p style="font-size: 0.9em; line-height: 1.5; font-style: italic; color: #8f8; border-left: 3px solid #0f0; padding: 12px 16px; background: rgba(0, 20, 0, 0.5); margin: 20px 0;"><i>ANZUELO está enviando mensajes falsos para engañar a estudiantes y conseguir acceso a sus cuentas. Mensajes urgentes, premios inexistentes, enlaces irresistibles... no hace falta forzar la entrada si te invitan a pasar.</i></p>
  
                     <div style="text-align: center; margin: 25px 0;">
                         <img src="../Imagenes/ANZUELO.png" alt="Anzuelo" style="width: 70%; height: auto; display: block; margin: 0 auto; border: 1px solid #0f0; box-shadow: 0 0 20px rgba(0, 255, 0, 0.15);">
