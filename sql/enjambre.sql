@@ -74,5 +74,5 @@ INSERT INTO PRUEBA (id_ia, nombre, descripcion, dificultad, activa, orden, fragm
 (6, 'Punto de Acceso', 'Asegura la comunicación inalámbrica interceptada por NEXO.', 'Final', TRUE, 6, 'FRAG-N6-WIFI');
 
 INSERT INTO USUARIO (nombre, grupo, password_hash, rol) VALUES 
-('admin_enjambre', 'Sistemas', '$2y$10$7RGE6Lx9eH1L2.dM6.QO.O2O.B5lYf/u8gY.jA9gR/U9o.l9w6.', 'Administrador'),
-('alumno_prueba', '4º ESO A', '$2y$10$8Q.e.m.z.u.l.o.e.n.j.a.m.b.r.e.p.r.o.y.e.c.t.o.', 'Alumno');
+('admin_enjambre', 'Sistemas', '$2y$12$IyvRi3BZuktFes/0Ipkv0u3aSd6aTUfzSqRFcZ3/WQdyc/36z5fKm', 'Administrador'),
+('alumno_prueba', '4º ESO A', '$2y$12$/82yML0.0Lz9A9zGKjRGf.b8dREPpOSo4vtFl.jr.hC/nrWYgOTfO', 'Alumno');
