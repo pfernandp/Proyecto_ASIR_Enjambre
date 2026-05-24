@@ -76,3 +76,7 @@ INSERT INTO PRUEBA (id_ia, nombre, descripcion, dificultad, activa, orden, fragm
 INSERT INTO USUARIO (nombre, grupo, password_hash, rol) VALUES 
 ('admin_enjambre', 'Sistemas', '$2y$12$IyvRi3BZuktFes/0Ipkv0u3aSd6aTUfzSqRFcZ3/WQdyc/36z5fKm', 'Administrador'),
 ('alumno_prueba', '4º ESO A', '$2y$12$/82yML0.0Lz9A9zGKjRGf.b8dREPpOSo4vtFl.jr.hC/nrWYgOTfO', 'Alumno');
+
+CREATE USER IF NOT EXISTS 'web_enjambre'@'localhost' IDENTIFIED BY 'E6_Pr0yect0_2026!';
+GRANT SELECT, INSERT, UPDATE ON enjambre.* TO 'web_enjambre'@'localhost';
+FLUSH PRIVILEGES;
