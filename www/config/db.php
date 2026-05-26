@@ -2,8 +2,8 @@
 // --- PARÁMETROS DE CONEXIÓN AL SGBD MARIADB ---
 $host = "localhost";
 $db   = "enjambre";
-$user = "admin";
-$pass = "admin";
+$user = "web_enjambre";
+$pass = "E6_Pr0yect0_2026!";
 $charset = "utf8";          // Conjunto de caracteres para integridad de datos
 
 // Configuración del Data Source Name (DSN)
