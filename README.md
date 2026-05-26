@@ -43,6 +43,60 @@ La base de datos enjambre sigue un modelo relacional normalizado en Tercera Form
   - LOG_IA: Sistema de trazabilidad y auditoría de eventos de seguridad (intentos fallidos, alertas críticas) para supervisión técnica.
 
 --------------------------------------------------------------------------------
+
+# Instrucciones de Despliegue y Replicabilidad (Arquitectura Docker)
+Para replicar el sistema "El Despertar del Enjambre" en un entorno virtualizado seguro, siga estos pasos administrativos:
+
+a. Preparación de la Base de Datos (Nivel Interno)
+
+En la máquina anfitriona (Ubuntu), debe preparar el motor MariaDB para aceptar conexiones desde la subred virtual de Docker. Importe el esquema y aplique el principio de mínimo privilegio:
+
+# 1. Crear base de datos e importar esquema DDL/DML
+      mysql -u root -p -e "CREATE DATABASE enjambre;"
+      mysql -u root -p enjambre < sql/enjambre.sql
+
+# 2. Autorizar al usuario técnico para el puente (bridge) de Docker
+
+      mysql -u root -p -e "GRANT SELECT, INSERT, UPDATE ON enjambre.* TO 'web_enjambre'@'172.17.%.%' IDENTIFIED BY 'E6_Pr0yect0_2026!'; FLUSH PRIVILEGES;"
+
+b. Orquestación y Despliegue de la Aplicación (Capa Lógica)
+
+Utilice el Dockerfile proporcionado para construir una imagen inmutable que incluya la configuración de Apache, el motor PHP 8.2 y los activos criptográficos SSL. No es necesario mover archivos manualmente al DocumentRoot del host, ya que Docker se encarga de la inyección de activos:
+
+# 1. Construir la imagen securizada (sin usar caché para asegurar integridad)
+
+      sudo docker build --no-cache -t enjambre-seguro .
+
+# 2. Lanzar el contenedor vinculando los sockets de red estándar (HTTP/HTTPS)
+
+      sudo docker run -d -p 80:80 -p 443:443 --name enjambre-servidor enjambre-seguro
+
+c. Configuración de Conexión y Aislamiento (Hardening)
+El nodo de conexión se encuentra ahora segregado del flujo público para evitar la exposición de credenciales. Verifique que el archivo ./config/php/db.php en su máquina local apunte a la interfaz del gateway de Docker antes de realizar el despliegue:
+
+   - Ruta local: config/php/db.php
+   - Parámetro crítico: $host = "172.17.0.1"; (IP de la pasarela hacia el MariaDB del host).   
+   - Jerarquía interna: El sistema utiliza rutas absolutas portables: require_once(__DIR__ . "/../config/db.php"); para garantizar que la lógica PHP localice las credenciales en el directorio protegido /var/www/config/ dentro del contenedor.
+
+Una vez desplegado, el acceso se realizará exclusivamente bajo el protocolo seguro en https://localhost, donde el servidor Apache realizará una redirección forzosa 301 desde el puerto 80 para proteger la integridad de los datos en tránsito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Instrucciones de Despliegue y Replicabilidad
 Para replicar el entorno en un servidor Linux compatible, siga estos pasos administrativos:
 
