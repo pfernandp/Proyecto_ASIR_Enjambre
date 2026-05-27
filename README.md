@@ -165,11 +165,15 @@ Proyecto_Enjambre/                         <- Raíz del proyecto
 Aspectos críticos de esta jerarquía:
 
 	- config/php/db.php: el parámetro $host debe estar configurado como '172.17.0.1' (gateway del bridge de Docker hacia el anfitrión), no como 'localhost'. Verifiamos este valor antes de construir la imagen.
-	- config/ssl/: los activos criptográficos deben existir en el repositorio local. Si aún no se han generado, ejecutamos los comandos: openssl genrsa -out server.key 4096 y openssl req -new -x509 -days 365 -key server.key -out server.crt.
+	
+	- config/ssl/: los activos criptográficos deben existir en el repositorio local. Si aún no se han generado, nos situamos en el directorio /config/ssl ejecutamos los comandos: 
+	
+		openssl genrsa -out server.key 4096 
+		openssl req -new -x509 -days 365 -key server.key -out server.crt
 
 	- www/ (raiz plana): todos los archivos PHP deben estar directamente en la raíz de esta carpe-ta, sin subdirectorios adicionales, para que el Dockerfile los mapee correctamente al DocumentRoot de Apache (/var/www/html/).
 
-	- Rutas de require_once: todos los scripts PHP que conectan al SGBD deben referenciar el nodo de conexión mediante ruta relativa: require_once('../config/db.php');. Esta convención garantiza que la ruta sea correcta tanto en el entorno Docker como en un despliegue LAMP tradicional.
+	- Rutas de require_once: todos los scripts PHP que conectan al SGBD deben referenciar el nodo de conexión mediante ruta relativa: require_once('../config/db.php');. Esto garantiza que la ruta sea correcta tanto en el entorno Docker como en un despliegue LAMP tradicional.
 
 3. El Dockerfile
 
