@@ -7,11 +7,10 @@ RUN docker-php-ext-install pdo pdo_mysql && a2enmod ssl rewrite
 RUN mkdir -p /etc/apache2/ssl/certificado
 COPY ./config/ssl/server.crt /etc/apache2/ssl/certificado/
 COPY ./config/ssl/server.key /etc/apache2/ssl/certificado/
+COPY ./config/apache/*.conf /etc/apache2/sites-available/
 
 # 3. Configuración del sitio seguro por defecto
-RUN sed -i 's|/etc/ssl/certs/ssl-cert-snakeoil.pem|/etc/apache2/ssl/certificado/server.crt|g' /etc/apache2/sites-available/default-ssl.conf \
-    && sed -i 's|/etc/ssl/private/ssl-cert-snakeoil.key|/etc/apache2/ssl/certificado/server.key|g' /etc/apache2/sites-available/default-ssl.conf \
-    && a2ensite default-ssl
+RUN a2ensite default-ssl
 
 # 4. PASO CLAVE: Crear la carpeta config fuera del flujo web (/var/www/config)
 # Esto permite que el require_once("../config/db.php") funcione desde /var/www/html/
