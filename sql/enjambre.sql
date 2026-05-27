@@ -96,4 +96,3 @@ INSERT INTO USUARIO (nombre, grupo, password_hash, rol) VALUES
 CREATE USER IF NOT EXISTS 'web_enjambre'@'localhost' IDENTIFIED BY 'E6_Pr0yect0_2026!';
 GRANT SELECT, INSERT, UPDATE ON enjambre.* TO 'web_enjambre'@'localhost';
 FLUSH PRIVILEGES;
-
