@@ -1,0 +1,43 @@
+services:
+
+  servidor_db:
+    image: mariadb:10.11
+    container_name: enjambre_db
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_segura
+      MYSQL_DATABASE: enjambre
+      MYSQL_USER: web_enjambre
+      MYSQL_PASSWORD: E6_Pr0yect0_2026!
+
+    volumes:
+      - ./sql/enjambre.sql:/docker-entrypoint-initdb.d/enjambre.sql
+      - ./mysql_data:/var/lib/mysql
+
+    networks:
+      - enjambre_network
+
+  servidor_web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: enjambre_web
+
+    restart: always
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    depends_on:
+      - servidor_db
+
+    networks:
+      - enjambre_network
+
+networks:
+  enjambre_network:
+    driver: bridge

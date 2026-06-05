@@ -1,0 +1,79 @@
+-- CREATE DATABASE IF NOT EXISTS enjambre CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE enjambre;
+
+CREATE TABLE IA (
+    id_ia INT AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT,
+    nivel_peligro INT,
+    CONSTRAINT PK_IA PRIMARY KEY (id_ia),
+    CONSTRAINT CHK_peligro CHECK (nivel_peligro BETWEEN 0 AND 100)
+) ENGINE=InnoDB;
+
+CREATE TABLE USUARIO (
+    id_usuario INT AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    grupo VARCHAR(50),
+    password_hash VARCHAR(255) NOT NULL,
+    rol ENUM('Alumno', 'Administrador') DEFAULT 'Alumno',
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario)
+) ENGINE=InnoDB;
+
+CREATE TABLE PRUEBA (
+    id_prueba INT AUTO_INCREMENT,
+    id_ia INT NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT,
+    dificultad ENUM('Fácil', 'Media', 'Difícil', 'Final'),
+    activa BOOLEAN DEFAULT FALSE,
+    orden INT,
+    fragmento_codigo TEXT NOT NULL,
+    CONSTRAINT PK_PRUEBA PRIMARY KEY (id_prueba),
+    CONSTRAINT FK_PRUEBA_IA FOREIGN KEY (id_ia) REFERENCES IA(id_ia) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE LOG_IA (
+    id_log INT AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    mensaje TEXT NOT NULL,
+    nivel_alerta ENUM('Bajo', 'Medio', 'Alto', 'Crítico'),
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT PK_LOG_IA PRIMARY KEY (id_log),
+    CONSTRAINT FK_LOG_USUARIO FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE ESTADO_USUARIO_PRUEBA (
+    id_estado INT AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    id_prueba INT NOT NULL,
+    completada BOOLEAN DEFAULT FALSE,
+    intentos INT DEFAULT 0,
+    tiempo_inicio DATETIME,
+    tiempo_fin DATETIME,
+    CONSTRAINT PK_ESTADO PRIMARY KEY (id_estado),
+    CONSTRAINT FK_ESTADO_USUARIO FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario) ON DELETE CASCADE,
+    CONSTRAINT FK_ESTADO_PRUEBA FOREIGN KEY (id_prueba) REFERENCES PRUEBA(id_prueba) ON DELETE CASCADE,
+    CONSTRAINT UQ_USUARIO_PRUEBA UNIQUE (id_usuario, id_prueba)
+) ENGINE=InnoDB;
+
+INSERT INTO IA (nombre, descripcion, nivel_peligro) VALUES 
+('CLAVE', 'Analiza debilidades en contraseñas.', 65),
+('VELO', 'Recopila información de perfiles expuestos.', 70),
+('ANZUELO', 'Utiliza mensajes de urgencia y phishing.', 85),
+('RASTRO', 'Rastrea la identidad digital del operador.', 75),
+('PARÁSITO', 'Se expande mediante descargas sospechosas.', 90),
+('NEXO', 'Domina redes Wi-Fi sin protección.', 95);
+
+INSERT INTO USUARIO (nombre, grupo, password_hash, rol) VALUES 
+('admin_enjambre', 'Sistemas', '$2y$12$IyvRi3BZuktFes/0Ipkv0u3aSd6aTUfzSqRFcZ3/WQdyc/36z5fKm', 'Administrador'),
+('alumno_prueba', '4 ESO A', '$2y$12$/82yML0.0Lz9A9zGKjRGf.b8dREPpOSo4vtFl.jr.hC/nrWYgOTfO', 'Alumno');
+
+INSERT INTO PRUEBA (id_ia, nombre, descripcion, dificultad, activa, orden, fragmento_codigo) VALUES 
+(1, 'La Llave Maestra', 'Crea una contraseña robusta.', 'Fácil', TRUE, 1, 'FRAG-C1-PASS'),
+(2, 'Sombra Digital', 'Configura tu privacidad.', 'Media', TRUE, 2, 'FRAG-V2-PRIV'),
+(3, 'El Cebo', 'Identifica el enlace fraudulento.', 'Media', TRUE, 3, 'FRAG-A3-FISH'),
+(4, 'Limpieza de Rastro', 'Elimina tus señales digitales.', 'Difícil', TRUE, 4, 'FRAG-R4-FOOT'),
+(5, 'Cuarentena', 'Detecta el código malicioso.', 'Difícil', TRUE, 5, 'FRAG-P5-MALW'),
+(6, 'Punto de Acceso', 'Asegura la comunicación inalámbrica.', 'Final', TRUE, 6, 'FRAG-N6-WIFI');
