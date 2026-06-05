@@ -1,31 +1,18 @@
-El Despertar del Enjambre: Escape Room de Ciberseguridad Educativa
+# El Despertar del Enjambre: Escape Room de Ciberseguridad Educativa
 
 "El Despertar del Enjambre" es una aplicación web dinámica diseñada como herramienta de concienciación en ciberseguridad para alumnos de la ESO. 
 Bajo una narrativa de ciencia ficción, el usuario actúa como un Operador de Red que debe neutralizar seis Inteligencias Artificiales (IAs) hostiles: 
 CLAVE (Contraseñas), VELO (Privacidad), ANZUELO (Phishing), RASTRO (Huella digital), PARÁSITO (Malware) y NEXO (Redes Wi-Fi)
 
-#Arquitectura de Sistemas (Stack LAMP)
+# Arquitectura de Sistemas (Stack LAMP)
 El proyecto implementa una Arquitectura de Microservicios Orquestada mediante Docker para garantizar la independencia de servicios y la persistencia de datos.
   
   - Nodo de Aplicación: Servidor Apache 2.4 sobre PHP 8.2 en contenedor inmutable.
   - Nodo de Datos (Nivel Interno): MariaDB 10.11 con motor transaccional InnoDB, garantizando integridad referencial y propiedades ACID.
   - Red Virtual: Red privada enjambre_network que segrega el tráfico interno de la base de datos del acceso público.
 
-#Jerarquía Modular del Proyecto
 
-La organización del repositorio sigue una estructura profesional de administración de sistemas:
-
-Proyecto_Enjambre/
-├── Dockerfile                # Definición del Nodo de Aplicación (Hardening)
-├── docker-compose.yml        # Orquestador de Servicios, Redes y Volúmenes
-├── config/                   # Configuración Administrativa
-│   ├── apache/               # Virtual Hosts (Redirección 301 y SSL)
-│   ├── php/                  # db.php (Nodo de conexión PDO)
-│   └── ssl/                  # Activos Criptográficos (RSA 4096 bits)
-├── sql/                      # Script DDL/DML consolidado (3FN)
-└── www/                      # DocumentRoot (Lógica PHP, CSS y Audio)
-
-#Seguridad y Hardening Aplicado
+# Seguridad y Hardening Aplicado
 Como administrador de sistemas, se han implementado medidas de robustecimiento siguiendo estándares OWASP:
 
   - Capa de Transporte: Forzado de tráfico HTTPS mediante redirección permanente (código 301) en el puerto 80.
@@ -34,7 +21,7 @@ Como administrador de sistemas, se han implementado medidas de robustecimiento s
   - Principio de Mínimo Privilegio: Usuario técnico web_enjambre limitado a sentencias DML (SELECT, INSERT, UPDATE).
   - Integridad Referencial: Persistencia en cascada (ON DELETE CASCADE) para la gestión administrativa de borrado de usuarios.
 
-#Protocolo de Despliegue Rápido
+# Protocolo de Despliegue Rápido
 Siga exactamente esta secuencia de comandos en una terminal de Ubuntu Server (22.04 LTS o superior) para levantar la infraestructura completa:
 
 1. Preparación del Sistema Anfitrión
